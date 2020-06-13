@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../Resources/css/Noticias.css" rel="stylesheet" type="text/css"/>
+        <title>Noticias</title>
+    </h:head>
+    <h:body>
+        <main>
+            <h:form id="tabsNoticia">
+                <ul class="tabs">
+                    <c:forEach items="#{categoriaControlador.consultarCategorias()}" var="cn">
+                        <li class="tab"><a href="##{cn.idCategoria}">#{cn.categoria}</a></li>
+                    </c:forEach>
+                </ul>
+                <c:forEach items="#{categoriaControlador.consultarCategorias()}" var="cnCon">
+                    <div id="#{cnCon.idCategoria}" class="important fondoTab">
+                        <c:forEach items="#{noticiaControlador.consultarNoticias(cnCon.idCategoria)}" var="noti">
+
+
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img src="#{noti.imagen}" alt="" class="activator"/>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">#{noti.titulo}<i class="material-icons right">more_vert</i></span>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4">#{noti.subtitulo}<i class="material-icons right">close</i></span>
+                                    <br/><br/>
+                                    <p>
+                                        #{noti.informacion}
+                                    </p>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </c:forEach>
+                
+            </h:form>
+        </main>
+
+        <script src="../../Resources/js/materialize.min.js" type="text/javascript"></script>
+        <script>
+            M.AutoInit();
+
+        </script>
+    </h:body>
+</html>
+

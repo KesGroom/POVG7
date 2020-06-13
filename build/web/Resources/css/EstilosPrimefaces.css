@@ -1,0 +1,201 @@
+/*
+Este archivo contiene algunos cambios a los estilos proporcionados por PrimeFaces
+cada uno adaptado al sistema de información POV, aunque no se aplican cambios a 
+todos sus componentes se busca al menos estilizarlo concorde a los estilos del 
+sistema. Este archivo es de uso institucional y no busca afectar a la organización 
+PrimeFaces, todos los elementos son de sus completa autoridad.
+*/
+/* 
+    Created on : 12/06/2020, 03:57:33 PM
+    Author     : POV - Gaes7 (Conservar)
+*/
+
+/*Mucho de los estilos de primeFaces se siguen conservando, por lo cual si desea
+realizar más cambios le recomendamos usar el inspector de elementos de su
+navegador (Se necesita comprender el enrutamiento de clases y las propiedades de
+css a gran medida), aquí haga click en el elemento deseado y se podra fijar en las 
+caracteristicas que posee y las clases que se las atribuyen, este método es muy 
+recomienda para personas impacientes y que buscan soluciones fáciles*/
+
+/*Se importa la fuente usada en el sistema, se recomienda usar este método para 
+evitar más trabajo e interferencias con Java*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+/*Se cambia la fuente y el tamaño de esta para las tablas*/
+.ui-widget {
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.1em;
+}
+
+/*Se altera los thead (titulares de las tablas) cambiando su color de fondo, 
+quitando la negrita, cambiando el color de texto, solo se conserva el border */
+.ui-state-default, .ui-widget-content .ui-state-default{
+    border: 1px solid #a8a8a8;
+    background-color: #b71c1c /*Color del sistema*/;
+    font-weight: normal /*Letra a con grosor normal*/;
+    color: #ecebeb /*Color del texto*/;
+    
+}
+
+/*La etiqueta !important es para emplear los estilos que se escriben en vez de 
+los predeterminados, es como reescribir o dar mayor "importancia"*/
+
+
+/*Se alteran los estilos de los componentes td y th, respectivos a th = contenido
+del thead o los titulos de la tabla, td = contenido del tbody o cuerpo de la tabla*/
+
+/*Se cambia el padding o margen interior haciendolo menor que el original y 
+se alinea el texto al centro, se conservan los demás estilos predeterminados*/
+td, th {
+    padding: 15px 5px;
+    display: table-cell;
+    
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+/*Se estilizan los tamaños de las fuentes de los distintos componentes de la tabla*/
+th{
+   font-size: 1em; 
+}
+
+td{
+  font-size: 0.8em;  
+}
+
+/*Para el uso de paginación de Primefaces, se conserva el borde y se cambia el 
+color de fondo y de texto, el grosor del texto y el tamaño de la fuente*/
+.ui-widget-header {
+    border: 1px solid #a8a8a8;
+    color: #333;
+    background-color: #d9d9d6;
+    font-weight: normal;
+    font-size: 0.8em; /*Medida 1em = 16px*/
+}
+
+/*Se editan los estilos de los SelectOneMenu, alterando su ancho el color de 
+fondo, el grosor de la letra, y eliminando el borde*/
+.ui-panelgrid-cell .ui-selectonemenu {
+    width: 12rem !important;  /*Medida de 1rem = 16px*/
+    background: none !important;
+    font-weight: normal;
+    color: #ecebeb;
+    border: none !important;
+}
+
+.ui-panelgrid-cell .ui-selectonemenu:hover {
+    border:none !important;
+}
+
+/*Se editan los estilos del botón lateral o activador del selectOneMenu, 
+cambiando su color de fondo, eliminando el border y aumento su ancho*/
+.ui-panelgrid-cell .ui-selectonemenu .ui-selectonemenu-trigger {
+    background: none !important;
+    border: none !important;
+    width: 1.7rem !important;
+}
+
+/*Se edita el contenido o label que se muestra en los selectOneMenu, es decir el
+texto que se seleccionó*/
+
+.ui-selectonemenu .ui-selectonemenu-label {
+    display: block;
+    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: normal;
+    
+    width: 100%;
+    box-shadow: none;
+    text-align: left;
+}
+
+/*Se elimina el fondo del label o la selección del selectOneMenu */
+
+.ui-selectonemenu .ui-inputfield{
+    background: none !important;
+}
+
+
+.registro .ui-widget-content {
+    border: none !important;
+    background: none;
+    color: black !important;
+}
+
+.registro .ui-state-default, .ui-widget-content .ui-state-default {
+    color: black /*Color del texto*/;
+}
+
+/*Se usa la clase registro (Propia del sistema) para especificar que el cambio 
+solo se ejecute en los elementos dentro de este elemento*/
+.registro .ui-panelgrid .ui-panelgrid-cell {
+    border:none;
+    padding: 4px 15px;
+}
+
+/*Estos fueron algunows estilos básicos que cambiamos para poder trabajar de
+mejor manera el Primefaces, ya podrán adaptarlo con sus propios solores y estilos, 
+solo no se pongan muy excesivos con esto.
+
+Cosas como los degradados de los thead no se modificaron, ni lo hovers de ningún elemento*/
+
+
+/*----------------Estilos propios----------------------*/
+
+/*Boton de exportar a Excel*/
+.chipExcel{
+    width: 10rem;
+    padding: 0.5rem; 
+    background-color: white;
+    display: flex;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    color: black;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    transition: all ease 200ms;
+}
+
+.chipExcel:hover{
+    background-color: #27831e;
+    color: white;
+    border-radius: 10px;
+}
+
+.chipExcel .iconExcel{
+    width: 30px;
+    height: 30px;
+}
+
+.fondoTab table tbody td{
+    background-color: white;
+}
+
+.fondoTab table a ion-icon{
+    font-size: 24px;
+    color: black;
+}
+
+/*Boton de eliminar*/
+
+.btnTrash:hover{
+    color: red;
+}
+
+/*Boton Actualizar*/
+.btnUpdate:hover{
+    color: #0091ea;
+}
+
+/*Contenedor de los botones de acción*/
+.botonesControl{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+} 
