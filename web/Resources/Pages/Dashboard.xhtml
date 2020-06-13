@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
+        <link href="../css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!-- Se vincula los estilos css específicos de la página-->
+        <link href="../css/Dasboard.css" rel="stylesheet" type="text/css"/>
+        <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
+        de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
+        la página inicie para evitar fallos-->
+        <script src="../js/prefix.js" type="text/javascript"></script>
+        <!-- Se incluye el icono del sistema -->
+        <link rel="shorcut icon" href="../img/Sistema/LOGOFavicon.png" alt=""/>
+        <!-- Nombre que se visualizará en el navegador -->
+        <title>DashBoard</title>
+    </h:head>
+
+    <h:body>
+        <header>
+            <div class="header" id="header">
+                <div class="enlaces">
+                    <a href="#" class="toogle_btn"><ion-icon name="menu"></ion-icon></a>
+                    <a href="#"><ion-icon name="notifications-circle"></ion-icon></a>
+                    <a href="#"><ion-icon name="person-circle"></ion-icon></a>
+                    <h:form>
+                        <h:commandLink action="#{sesionControlador.cerrarSesion()}" 
+                                       style="color:#fff;" value=''><ion-icon name="log-out"></ion-icon></h:commandLink> 
+                    </h:form>
+
+                </div>
+
+                <img src="../img/Colegio/LogoCanoNombre.png" alt=""/></div>
+        </header>
+        <ul id="slide-out" class="sidenav sidenav-fixed show-on-large">
+
+            <li><h:form id="form-menu">
+                    <li><div class="user-view">
+                            <div class="background">
+
+                            </div>
+
+                            <img class="circle" src="#{sesionControlador.usuario.foto}" alt=""/>
+                            <a href="#name"><span class="white-text name"><h:outputText value="#{sesionControlador.usuario.nombre}"></h:outputText></span></a>
+                            <a href="#email"><span class="white-text email"><h:outputText value="#{sesionControlador.rolSeleccionado.rol}"/></span></a>
+                        </div></li>
+                    <li >
+
+
+                    </li>
+                    <c:forEach items="#{sesionControlador.rolSeleccionado.rolHasPermisoList}" var="p">
+                        <li class="no-padding">
+                            <ul class="collapsible collapsible-accordion">
+                                <li>
+                                    <c:if test="#{empty p.permiso.permisoPadre}">
+                                        <a href="#{p.permiso.url}" class="otro collapsible-header" >
+                                            <div class="PermisoPadre">
+                                                #{p.permiso.nombre}
+                                                <ion-icon name="#{p.permiso.icon}"></ion-icon>
+                                            </div>
+                                        </a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <c:forEach items="#{sesionControlador.hijos(p.permiso.idPermiso)}" var="sp">
+                                                    <c:forEach items="#{sesionControlador.rolSeleccionado.rolHasPermisoList}" var="op">
+                                                        <c:if test="#{sp.idPermiso eq op.permiso.idPermiso}">
+                                                            <li>
+                                                                <a href="#{sp.url}" class="otro" target="WorksSpace">
+                                                                    <div class="OpcionMenu">
+                                                                        #{sp.nombre}
+                                                                        <ion-icon name="#{sp.icon}"></ion-icon>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:forEach>
+                                            </ul>
+                                        </div>
+                                        
+
+
+                                    </c:if>
+                                </li>
+                            </ul>
+                        </li>
+                    </c:forEach>
+
+                </h:form></li>
+        </ul>
+
+        <main id="main">
+            <iframe frameborder="0" src="VistaInicialDash.xhtml" name="WorksSpace"></iframe>
+        </main>
+
+        <!-- Se enlaza a las funciones y eventos proporcionados por el framework materialize -->
+        <script src="../js/materialize.min.js" type="text/javascript"></script>
+        <!-- Se vincula al script AutoIniti el cual contiene el inicializador automático de los elementos de materialize -->
+        <script>
+            M.AutoInit();
+        </script>
+        <!-- Se hace uso de la iconografia de ionicons -->
+        <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+        <!-- Se vincula los scripts propios de la página-->
+        <script src="../js/MenuDashboard.js" type="text/javascript"></script>
+    </h:body>
+</html>
+
