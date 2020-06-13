@@ -2,12 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
         <!-- Se vincula los estilos css específicos de la página-->
         <link href="../../Resources/css/AAdministration.css" rel="stylesheet" type="text/css"/>
+        <link href="../../Resources/css/EstilosPrimefaces.css" rel="stylesheet" type="text/css"/>
         <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
         de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
         la página inicie para evitar fallos-->
@@ -48,22 +50,31 @@
                 <f:view>
 
 
+
                     <h:form>
-                        <h:dataTable value="#{gradoController.consultarTodos()}" var="grado">
-                            <h:column>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{gradoController.consultarTodos()}" var="item">
+                            <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Id Grado"/>
+                                    <h:outputText value="IdGrado"/>
                                 </f:facet>
-                                <h:outputText value="#{grado.idGrado}"/>
-                            </h:column>
-                            <h:column>
+                                <h:outputText value="#{item.idGrado}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Grado"/>
                                 </f:facet>
-                                <h:outputText value="#{grado.grado}"/>
-                            </h:column>
-                        </h:dataTable>
+                                <h:outputText value="#{item.grado}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Estado"/>
+                                </f:facet>
+                                <h:outputText value="#{item.estado}"/>
+                            </p:column>
+                        </p:dataTable>
                     </h:form>
+
                 </f:view>
 
             </div>
