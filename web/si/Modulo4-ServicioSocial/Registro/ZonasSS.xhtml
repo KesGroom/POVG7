@@ -2,12 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <!-- Se enlaza a los estilos proporcionados por el framework materialize -->
         <link href="../../../Resources/css/materialize.min.css" rel="stylesheet" type="text/css"/>
         <!-- Se vincula los estilos css específicos de la página-->
         <link href="../../../Resources/css/zonaCoordinador.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../Resources/css/EstilosPrimefaces.css" rel="stylesheet" type="text/css"/>
         <!-- Este script se encarga de implementar los prefijos necesarios para algunas funciones y estilos
         de cada navegador, se coloca en el inicio ya que es necesario que cargue estos prefijos antes de que
         la página inicie para evitar fallos-->
@@ -79,70 +81,59 @@
                     <f:view>
 
 
-                        <h:form>               
-                            <h:dataTable value="#{zonaControlador.consultarZona()}" var="item">
-                                <h:column>
+
+                        <h:form>
+                            <p:dataTable value="#{zonaControlador.consultarZona()}" var="Zona">
+                                <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="Nombre"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.nombre}"/>
-                                </h:column>
-                                <h:column>
+                                    <h:outputText value="#{Zona.nombre}"/>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="Lugar"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.lugar}"/>
-                                </h:column>
-                                <h:column>
+                                    <h:outputText value="#{Zona.lugar}"/>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="Encargado"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.encargado}"/>
-                                </h:column>
-                                <h:column>
+                                    <h:outputText value="#{Zona.encargado}"/>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Hora entrada"/>
+                                        <h:outputText value="HoraEntrada"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.horaEntrada}">
+                                    <h:outputText value="#{Zona.horaEntrada}">
                                         <f:convertDateTime pattern="HH:mm:ss" />
                                     </h:outputText>
-                                </h:column>
-                                <h:column>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Hora salida"/>
+                                        <h:outputText value="HoraSalida"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.horaSalida}">
+                                    <h:outputText value="#{Zona.horaSalida}">
                                         <f:convertDateTime pattern="HH:mm:ss" />
                                     </h:outputText>
-                                </h:column>
-                                <h:column>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Tiempo de servicio"/>
+                                        <h:outputText value="TiempodeServicio"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.tiempodeServicio}"/>
-                                </h:column>
-                                <h:column>
+                                    <h:outputText value="#{Zona.tiempodeServicio}"/>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="Cupos"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.cupos}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Elimimnar"/>
-                                    </f:facet>
-                                    <h:commandLink class="eliminar" action="#{zonaControlador.Remover(item)}"><ion-icon name="trash-outline"></ion-icon></h:commandLink>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Modificar"/>
-                                    </f:facet>                  
-                                    <h:commandLink  class="editar" action="#{zonaControlador.preActualizar(zona)}"><ion-icon name="create-outline"></ion-icon></h:commandLink>
-                                </h:column>
-
-                            </h:dataTable>
-
+                                    <h:outputText value="#{Zona.cupos}"/>
+                                </p:column>
+                            </p:dataTable>
                         </h:form>
+
+                        
                     </f:view>
                 </div>
             </div>
