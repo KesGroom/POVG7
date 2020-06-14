@@ -7,6 +7,7 @@ package Controladores;
 
 import Entidades.BitacoraServicioSocial;
 import Entidades.Estudiante;
+import Entidades.Usuario;
 import Entidades.ZonaServicioSocial;
 import Facade.BitacoraServicioSocialFacade;
 import javax.inject.Named;
@@ -29,6 +30,7 @@ public class BitacoraControlador implements Serializable {
     public BitacoraControlador() {
         estudiante = new Estudiante();
         zona = new ZonaServicioSocial();
+        usuario = new Usuario();
         bitacora = new BitacoraServicioSocial();
         bitacoraFacade = new BitacoraServicioSocialFacade();
     }
@@ -36,6 +38,7 @@ public class BitacoraControlador implements Serializable {
     private BitacoraServicioSocial bitacora;
     private Estudiante estudiante;
     private ZonaServicioSocial zona;
+    private Usuario usuario;
     
     @EJB
     BitacoraServicioSocialFacade bitacoraFacade;
@@ -43,6 +46,7 @@ public class BitacoraControlador implements Serializable {
     
     
     public String registrar(){
+        bitacora.setCoordinador(usuario);
         bitacora.setEstudiante(estudiante);
         bitacora.setZonadeServicio(zona);
         bitacoraFacade.create(bitacora);
@@ -86,5 +90,15 @@ public class BitacoraControlador implements Serializable {
     public void setZona(ZonaServicioSocial zona) {
         this.zona = zona;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
     
 }

@@ -35,6 +35,7 @@ public class ZonaControlador implements Serializable {
     ZonaServicioSocialFacade zonaFacade;
 
     public String registrar() {
+        zona.setEstado(1);
         zonaFacade.create(zona);
         zona = new ZonaServicioSocial();
         return "ZonasSS.xhtml";

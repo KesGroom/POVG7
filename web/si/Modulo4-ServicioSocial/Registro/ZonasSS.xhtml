@@ -130,6 +130,13 @@
                                     </f:facet>
                                     <h:outputText value="#{Zona.cupos}"/>
                                 </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value=""/>
+                                    </f:facet>
+                                    <h:commandButton><ion-icon class="btnUpdate" name="repeat"></ion-icon></h:commandButton>
+                                    <h:commandLink action="#{zonaControlador.Remover(Zona)}"><ion-icon class="btnTrash" name="trash-outline"></ion-icon></h:commandLink>
+                                </p:column>
                             </p:dataTable>
                         </h:form>
 
